@@ -6,6 +6,7 @@ const loadData = async () => {
     else {
         const url = `https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=${name}`;
         const res = await fetch(url);
+        document.getElementById('spinner').classList.remove('d-none');
         const data = await res.json();
         displayData(data);
     }
@@ -13,6 +14,7 @@ const loadData = async () => {
 }
 
 const displayData = data => {
+    document.getElementById('spinner').classList.add('d-none');
     const teams = data.teams;
     // console.log(teams);
     const parentDiv = document.getElementById('parent');
